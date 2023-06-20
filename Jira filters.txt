@@ -1,0 +1,12 @@
+Тех. Задание
+Задание:
+1. Создать 3 фильтра в Jira:
+1.	Все ваши дефекты на компоненты Emergency File и Информационно-аналитическая система медицинских учреждений, исключая северити enhancement, в которые вносились изменения в течение последних 10 дней
+2.	Все ваши дефекты в статусах open, in progress и resolved, в которых нет аттачментов или проставлена фикс версия, или используются слова wrong и correct
+3.	Все ваши дефекты для приложения Emergency File (северити Minor) и приложения Информационно-аналитическая система медицинских учреждений (северити Average/Major)
+2. Создать дашборд в Jira, на котором будут отображены эти 3 фильтра в виде гаджетов.
+
+Фильтры:
+1. project = 41960 AND issuetype = Bug AND component in ("Emergency File", "Информационно-аналитическая система медицинских учреждений") AND ("Severity/Importance" != 5-Enhancement OR updated <= -10d) AND reporter in (v.zhilinskaya)
+2. project = 41960 AND issuetype = Bug AND status in (Open, "In Progress", Resolved) AND (attachments is EMPTY OR fixVersion is not EMPTY OR text ~ wrong OR text ~ correct) AND reporter in (v.zhilinskaya)
+3. project = 41960 AND issuetype = Bug AND component = "Emergency File" AND "Severity/Importance" = 4-Minor OR component = "Информационно-аналитическая система медицинских учреждений" AND "Severity/Importance" in (2-Major, 3-Average) AND reporter in (v.zhilinskaya)
